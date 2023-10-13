@@ -11,8 +11,8 @@ namespace InterviewCopilotServer.Middleware
         private readonly TimeSpan _period;
         private readonly Dictionary<string, int> RateLimitedApisPerMinRate = new Dictionary<string, int>()
         {
-            { "/api/OpenAI/generate-question", 20 },
-            { "/api/OpenAI/analyze-solution", 20 },
+            { "/api/OpenAI/generate-question", 50 },
+            { "/api/OpenAI/analyze-solution", 50 },
         };
 
         public ApiKeyRateLimiterMiddleware(RequestDelegate next, IMemoryCache cache, TimeSpan period, ILogger<ApiKeyRateLimiterMiddleware> logger)

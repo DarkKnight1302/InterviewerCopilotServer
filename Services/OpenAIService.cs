@@ -7,7 +7,7 @@ namespace InterviewCopilotServer.Services
 {
     public class OpenAIService : IOpenAIService
     {
-        private const string GPT_35_Model = "gpt-35-turbo";
+        private const string GPT_35_Model = "gpt-35-turbo-16k";
         private HttpClient httpClient;
         private OpenAIClient openAIClient;
         private RequestThresholdPerDay requestThresholdPerDay;
