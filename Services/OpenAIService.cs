@@ -7,20 +7,20 @@ namespace InterviewCopilotServer.Services
 {
     public class OpenAIService : IOpenAIService
     {
-        private const string GPT_35_Model = "gpt-35-turbo-16k";
-        private HttpClient httpClient;
+        private const string GPT_35_Model = "Test";
+        //private HttpClient httpClient;
         private OpenAIClient openAIClient;
         private RequestThresholdPerDay requestThresholdPerDay;
 
         public OpenAIService(ISecretService secretService)
         {
-            this.httpClient = new HttpClient();
+            //this.httpClient = new HttpClient();
             string openAIKey = secretService.GetSecretValue("OPEN_AI_KEY");
             string openAIUrl = secretService.GetSecretValue("OPEN_AI_URL");
-            this.httpClient.DefaultRequestHeaders.Add("api-key", openAIKey);
-            this.httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {openAIKey}");
+            //this.httpClient.DefaultRequestHeaders.Add("api-key", openAIKey);
+            //this.httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {openAIKey}");
             this.openAIClient = new OpenAIClient(new Uri(openAIUrl), new AzureKeyCredential(openAIKey));
-            this.requestThresholdPerDay = new RequestThresholdPerDay(10000);
+            this.requestThresholdPerDay = new RequestThresholdPerDay(2000);
         }
 
         public async Task<string> GenerateQuestionAsync(string prompt, string systemContext, List<string> previouslyAskedQuestion, float temperature = 0.5f)
